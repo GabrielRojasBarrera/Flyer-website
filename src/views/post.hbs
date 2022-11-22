@@ -1,0 +1,99 @@
+<div class="card bg-secondary text-black">
+  
+  <div class="card-header d-flex align-items-center">
+    <span class="material-icons me-2">
+      account_box
+    </span>
+     Perfil
+  </div>
+  <div class="card-body">
+    <p>email: {{user.email}}</p>
+    <p>desde: {{user.createdAt}}</p>
+  </div>
+  
+</div>
+<div class="card mt-2 bg-secondary text-black">
+  
+  <div class="card-header d-flex align-items-center">
+    <span class="material-icons me-2">
+      cloud_upload
+    </span>
+    Subir Imágenes
+  </div>
+
+  {{! IMAGE UPLOAD FORM }}
+  <div class="card-body p-5">
+    <form action="/post" method="POST" enctype="multipart/form-data">
+
+      <div class="mb-3">
+        <input
+          type="file"
+          name="post"
+          class="form-control text-dark border-primary"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <input
+          type="text"
+          name="title"
+          class="form-control bg-light text-black border border-primary"
+          placeholder="Título"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <textarea
+          name="description"
+          rows="2"
+          class="form-control bg-light text-black border border-primary"
+          placeholder="Descripción"
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-success">
+          <i class="fa fa-upload"></i>
+          Subir Imagen
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<div class="card mt-2 bg-secondary text-black">
+  <div class="card-header d-flex align-items-center">
+    <span class="material-icons me-2">
+      cloud
+    </span>
+    Subidas recientes
+  </div>
+  <div class="card-body p-5">
+    <div class="row">
+      {{#each posts}}
+        <div class="col-md-4 text-center">
+          <a href="/posts/{{uniqueId}}">
+            <img
+              src="/uploads/{{fileName}}"
+              alt="{{title}}"
+              class="w-100 h-100"
+              style="object-fit: cover;"
+            />
+          </a>
+        </div>
+      {{else}}
+        <div class="text-black text-center p-5">
+          <h1 class="text-light">No hay imágenes que mostrar <strong>yet</strong></h1>
+          <p>Sube tu primera imagen</p>
+          <span class="material-icons" style="font-size: 7rem;">
+            add_a_photo
+          </span>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</div>
