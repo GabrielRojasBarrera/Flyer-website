@@ -8,7 +8,7 @@ const sidebar = require('../helpers/sidebar')
 const ctrl = {};
 
 ctrl.index =  async(req, res, next)=>{
-    let viewModel = { post: {}, comments: [] };
+    let viewModel = { post: {}, comments: [], layout: "nostats"};
 
     const post = await Post.findOne({
         fileName: {$regex: req.params.post_id},
@@ -32,11 +32,11 @@ ctrl.index =  async(req, res, next)=>{
    
 
     viewModel.comments = comments;
-    viewModel = await sidebar(viewModel);
+   
 
     console.log(viewModel)
     
-    res.render('posts', viewModel);
+    res.render('posts',viewModel);
 };
 
 ctrl.create  =  (req, res)=>{

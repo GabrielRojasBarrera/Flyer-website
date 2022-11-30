@@ -10,7 +10,7 @@ ctrl.index  = async (req, res, next) =>{
 
     const viewModel = { posts: [] };
     viewModel.posts = posts; 
-    res.render('index', { layout: "nostats", posts: posts} );
+    res.render('index', { layout: "nostats", posts} );
   } catch (error) {
     next(error);
   }

@@ -2,6 +2,7 @@ const {Post, Comment} = require('../model');
 
 async function postCounter() {
   return await Post.countDocuments();
+  
 }
 
 async function commentsCounter() {
